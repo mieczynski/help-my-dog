@@ -1,5 +1,5 @@
 {
-    "name": "help-my-dog",
+    "name": "help/my-dog",
     "type": "project",
     "license": "MIT",
     "description": "Help My Dog - Symfony + Postgres + Redis",
@@ -33,13 +33,15 @@
         "lexik/jwt-authentication-bundle": "^v3.1.1"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.60",
-        "symfony/var-dumper": "^7.0",
-        "symfony/phpunit-bridge": "^7.0",
-        "phpunit/phpunit": "^10.5",
         "fakerphp/faker": "^1.23",
         "friendsofphp/php-cs-fixer": "^3.58",
-        "phpstan/phpstan": "^1.11"
+        "phpstan/phpstan": "^1.11",
+        "phpstan/phpstan-doctrine": "^1.5",
+        "phpstan/phpstan-symfony": "^1.4",
+        "phpunit/phpunit": "^10.5",
+        "symfony/maker-bundle": "^1.60",
+        "symfony/phpunit-bridge": "^7.0",
+        "symfony/var-dumper": "^7.0"
     },
     "autoload": {
         "psr-4": {

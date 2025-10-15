@@ -1,0 +1,14 @@
+{
+  "name": "help-my-dog-api",
+  "version": "1.0.0",
+  "description": "Help My Dog - Symfony Backend",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.php\"",
+    "format:check": "prettier --check \"**/*.php\""
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.2",
+    "prettier": "^3.2.5"
+  }
+}

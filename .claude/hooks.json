@@ -1,0 +1,9 @@
+naming-conventions.md{
+  "hooks": {
+    "post_tool_use": {
+      "enabled": true,
+      "tools": ["Write", "Edit"],
+      "script": ".claude/hooks/post-write.sh"
+    }
+  }
+}

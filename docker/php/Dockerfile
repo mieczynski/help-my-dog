@@ -10,7 +10,8 @@ RUN apk add --no-cache \
     icu icu-libs \
     libpng libjpeg-turbo freetype \
     postgresql-libs \
-    libzip
+    libzip \
+    nodejs npm
 
 # Build deps (removed later)
 RUN apk add --no-cache --virtual .build-deps \
