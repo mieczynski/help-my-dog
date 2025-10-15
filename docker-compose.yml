@@ -1,0 +1,99 @@
+version: "3.9"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      args:
+        PHP_VERSION: "8.3"
+    container_name: help_my_dog_php
+    working_dir: /var/www/html/api
+    volumes:
+      - ./:/var/www/html:delegated
+    environment:
+      APP_ENV: dev
+      PHP_IDE_CONFIG: "serverName=helpMyDog"
+      XDEBUG_CLIENT_HOST: host.docker.internal
+      SYMFONY_PHPUNIT_VERSION: 10
+      COMPOSER_HOME: /tmp
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "php", "-v"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: help_my_dog_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html:delegated
+      - ./docker/nginx/conf.d/app.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      php:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  db:
+    image: postgres:16-alpine
+    container_name: help_my_dog_db
+    environment:
+      POSTGRES_DB: help_my_dog
+      POSTGRES_USER: help_my_dog
+      POSTGRES_PASSWORD: help_my_dog
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U help_my_dog -d help_my_dog"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  redis:
+    image: redis:7-alpine
+    container_name: help_my_dog_redis
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    container_name: help_my_dog_frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app:delegated
+    environment:
+      VITE_API_BASE_URL: http://localhost:8080
+    ports:
+      - "5173:5173"
+    command: ["sh", "-c", "npm install && npm run dev -- --host 0.0.0.0"]
+    depends_on:
+      nginx:
+        condition: service_started
+
+volumes:
+  pgdata:
+  node_modules:
