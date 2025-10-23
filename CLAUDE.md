@@ -219,6 +219,10 @@ The PHP container includes Xdebug with the following settings:
 - Use readonly properties for immutable data transfer objects and value objects
 - Prefer constructor injection over setter injection for required dependencies
 - Use interface type hints in method signatures instead of concrete implementations
+- Write small, focused functions that do one thing well - aim for functions under 20 lines
+- Create dedicated service classes for distinct responsibilities instead of large multi-purpose services
+- Follow Single Responsibility Principle (SRP) - each class should have one reason to change
+- Extract complex logic into separate, testable service methods with clear names
 
 #### CONTROLLERS_AND_API
 
@@ -240,6 +244,9 @@ The PHP container includes Xdebug with the following settings:
 - Use `uuid_binary_ordered_time` type for UUID primary keys with better performance
 - Define entity relationships with proper cascade and orphanRemoval options
 - Keep entities focused on data representation - avoid business logic in entities
+- Use factory classes to create entity instances with complex initialization logic
+- Create dedicated factory services in `src/Factory/` directory for entities requiring business logic during instantiation
+- Keep entity constructors simple - delegate complex object creation to factory classes
 - Use custom repository classes for complex queries - avoid DQL in controllers
 - Implement `__construct()` to initialize collections and set required default values
 - Use Doctrine lifecycle callbacks (`#[ORM\PrePersist]`, `#[ORM\PreUpdate]`) sparingly
@@ -273,6 +280,9 @@ The PHP container includes Xdebug with the following settings:
 - Avoid circular dependencies by restructuring service relationships
 - Make services private by default (Symfony's default behavior)
 - Use service factories for complex service instantiation logic
+- Create factory classes in `src/Factory/` namespace with descriptive names (e.g., `UserFactory`, `OrderFactory`)
+- Inject dependencies into factory constructors to enable factories to use other services
+- Use factories in command handlers, controllers, or services via constructor injection
 
 #### VALIDATION
 

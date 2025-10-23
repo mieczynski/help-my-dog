@@ -722,6 +722,7 @@ public function up(Schema $schema): void
 
 - ✅ Entity mapping przez PHP attributes (`#[ORM\Entity]`, `#[ORM\Column]`)
 - ✅ UUID generation strategy: `UuidGenerator::class`
+- ✅ UUID generation strategy: `UuidGenerator::class`
 - ✅ Lifecycle callbacks: `@PrePersist`, `@PreUpdate`, `@PreRemove`
 - ✅ Repository pattern dla złożonych zapytań
 - ✅ CQRS buses: `command.bus`, `query.bus`, `event.bus`

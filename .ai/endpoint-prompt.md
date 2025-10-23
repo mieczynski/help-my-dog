@@ -3,7 +3,7 @@ Jesteś doświadczonym architektem oprogramowania, którego zadaniem jest stworz
 Zanim zaczniemy, zapoznaj się z poniższymi informacjami:
 
 1. Route API specification:
-<route_api_specification>
+   <route_api_specification>
 #### POST /api/dogs
 
 **Description:** Create a new dog profile
@@ -80,7 +80,7 @@ Zanim zaczniemy, zapoznaj się z poniższymi informacjami:
 ---</route_api_specification>
 
 2. Related database resources:
-<related_db_resources>
+   <related_db_resources>
 ### 1.2 Tabela: `dog`
 
 Przechowuje profile psów użytkowników dla personalizacji porad AI.
@@ -101,24 +101,24 @@ Przechowuje profile psów użytkowników dla personalizacji porad AI.
 </related_db_resources>
 
 3. Definicje typów:
-<type_definitions>
-.ai/symfony-dto-prompt.md
-</type_definitions>
+   <type_definitions>
+   .ai/symfony-dto-prompt.md
+   </type_definitions>
 
 3. Definicje cqrs:
-<type_definitions>
-.ai/symfony-cqrs-prompt.md
-</type_definitions>
+   <type_definitions>
+   .ai/symfony-cqrs-prompt.md
+   </type_definitions>
 
 5. Tech stack:
-<tech_stack>
-.ai/tech-stack.md
-</tech_stack>
+   <tech_stack>
+   .ai/tech-stack.md
+   </tech_stack>
 
 6. Implementation rules:
-<implementation_rules>
-CLAUDE.md
-</implementation_rules>
+   <implementation_rules>
+   CLAUDE.md
+   </implementation_rules>
 
 Twoim zadaniem jest stworzenie kompleksowego planu wdrożenia endpointu interfejsu API REST. Przed dostarczeniem ostatecznego planu użyj znaczników <analysis>, aby przeanalizować informacje i nakreślić swoje podejście. W tej analizie upewnij się, że:
 
@@ -144,12 +144,12 @@ Po przeprowadzeniu analizy utwórz szczegółowy plan wdrożenia w formacie mark
 
 W całym planie upewnij się, że
 - Używać prawidłowych kodów stanu API:
-  - 200 dla pomyślnego odczytu
-  - 201 dla pomyślnego utworzenia
-  - 400 dla nieprawidłowych danych wejściowych
-  - 401 dla nieautoryzowanego dostępu
-  - 404 dla nie znalezionych zasobów
-  - 500 dla błędów po stronie serwera
+    - 200 dla pomyślnego odczytu
+    - 201 dla pomyślnego utworzenia
+    - 400 dla nieprawidłowych danych wejściowych
+    - 401 dla nieautoryzowanego dostępu
+    - 404 dla nie znalezionych zasobów
+    - 500 dla błędów po stronie serwera
 - Dostosowanie do dostarczonego stacku technologicznego
 - Postępuj zgodnie z podanymi zasadami implementacji
 
@@ -165,8 +165,8 @@ Końcowym wynikiem powinien być dobrze zorganizowany plan wdrożenia w formacie
 - Metoda HTTP: [GET/POST/PUT/DELETE]
 - Struktura URL: [wzorzec URL]
 - Parametry:
-  - Wymagane: [Lista wymaganych parametrów]
-  - Opcjonalne: [Lista opcjonalnych parametrów]
+    - Wymagane: [Lista wymaganych parametrów]
+    - Opcjonalne: [Lista opcjonalnych parametrów]
 - Request Body: [Struktura treści żądania, jeśli dotyczy]
 
 ## 3. Wykorzystywane typy
@@ -191,7 +191,7 @@ Końcowym wynikiem powinien być dobrze zorganizowany plan wdrożenia w formacie
 1. [Krok 1]
 2. [Krok 2]
 3. [Krok 3]
-...
+   ...
 ```
 
 Końcowe wyniki powinny składać się wyłącznie z planu wdrożenia w formacie markdown i nie powinny powielać ani powtarzać żadnej pracy wykonanej w sekcji analizy.
