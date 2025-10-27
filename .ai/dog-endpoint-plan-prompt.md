@@ -46,7 +46,8 @@ Sekcje:
 4. **Względy bezpieczeństwa** - auth, authorization, walidacja
 5. **Obsługa błędów** - tabela status codes
 6. **Etapy wdrożenia** - krok po kroku (DTO → Command → Handler → Factory → Controller → Tests)
-7. **Potencjalne problemy** - tabela problem/solution
+7. **Unit Tests** - test structure, test cases dla Factory/Handler/DTO, mocking guidelines, coverage requirements
+8. **Potencjalne problemy** - tabela problem/solution
 
 
 ## Output
