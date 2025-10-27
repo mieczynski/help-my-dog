@@ -79,10 +79,7 @@
    - HMR dla szybkiego developmentu
 
 ### Komendy Docker
-- `make up` - build i start kontenerów
-- `make stop` - zatrzymanie
-- `make down` - zatrzymanie + usunięcie wolumenów
-- Wszystkie komendy PHP przez: `docker compose exec php`
+**Szczegóły:** Zobacz `CLAUDE.md` sekcję "Common Commands" i `Makefile`
 
 ---
 
@@ -129,54 +126,15 @@
 
 ## Struktura katalogów
 
-### Backend (`api/`)
-```
-src/
-├── Controller/      # REST API controllers
-├── Entity/          # Doctrine entities (User, Dog, AdviceCard)
-├── Repository/      # Doctrine repositories
-├── DataFixtures/    # Seeders dla dev/test
-└── Kernel.php
-
-config/
-├── packages/        # Konfiguracje bundli
-├── routes/          # Definicje routingu
-└── services.yaml    # Container serwisów
-
-migrations/          # Doctrine migrations
-tests/              # PHPUnit tests
-public/             # Web root (index.php)
-```
-
-### Frontend (`frontend/`)
-```
-src/
-├── main.tsx        # Entry point
-├── App.tsx         # Root component
-└── index.css       # Global styles
-
-vite.config.ts      # Konfiguracja Vite + API proxy
-```
+**Szczegóły:** Zobacz `README.md` sekcję "Architecture Overview" i `CLAUDE.md` sekcję "Directory Structure"
 
 ---
 
 ## Workflow deweloperski
 
-### Backend
-1. Zmiany w kodzie PHP
-2. `docker compose exec php composer fix` - auto-formatowanie
-3. `docker compose exec php composer analyse` - PHPStan check
-4. `docker compose exec php composer test` - uruchomienie testów
-5. `docker compose exec php php bin/console doctrine:migrations:generate` - nowa migracja
-6. `make migrate` - wykonanie migracji
+**Szczegóły:** Zobacz `CLAUDE.md` sekcję "Common Commands"
 
-### Frontend
-1. Zmiany w React/TS
-2. Hot reload automatyczny (Vite HMR)
-3. `make front-build` - build produkcyjny
-4. ESLint/Prettier (do skonfigurowania)
-
-### Git workflow
-- Commity w języku angielskim
-- Konwencja: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
-- Pre-commit hooks (do rozważenia): PHP CS Fixer + PHPStan
+**Kluczowe komendy:**
+- Backend: `composer fix`, `composer analyse`, `composer test`, `make migrate`
+- Frontend: `make front-dev`, `make front-build`
+- Git: conventional commits (`feat:`, `fix:`, `refactor:`)
