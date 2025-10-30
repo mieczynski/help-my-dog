@@ -29,7 +29,6 @@ class CreateDogCommandHandlerTest extends TestCase
         $handler = new CreateDogCommandHandler($dogFactory, $entityManager);
 
         $command = new CreateDogCommand(
-            userId: 'user-uuid',
             name: 'Rex',
             breed: 'German Shepherd',
             ageMonths: 24,
